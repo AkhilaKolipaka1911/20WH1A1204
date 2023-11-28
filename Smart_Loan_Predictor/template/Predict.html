@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loan Prediction</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #F1F4FFFF;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 90%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            text-align: left;
+            font-weight: bold; /* Added this line for bold text */
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357bd8;
+        }
+    </style>
+    
+    <script>
+        function redirectToResult(prediction) {
+            if (prediction === 1) {
+                window.location.href = '/la';  // Redirect to LA.html
+            } else {
+                window.location.href = '/lr';  // Redirect to LR.html
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Prediction</h1>
+        <p>Unlock your financial destiny: Fill the form to reveal your application's prediction!</p>
+        
+        <form action='/predict' method='POST' {% if prediction is defined %}onsubmit="redirectToResult({{ prediction }})"{% endif %}>
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" placeholder="Age" required>
+
+            <label for="income">Annual Income</label>
+            <input type="text" id="income" name="income" placeholder="Annual Income(In thousands)" required>
+
+            <label for="zipcode">Zip Code</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" required>
+
+            <label for="family">Number of Family Members</label>
+            <input type="text" id="family" name="family" placeholder="Number of Family Members" required>
+
+            <label for="cc_avg">Average Monthly Spending with Credit Card</label>
+            <input type="text" id="cc_avg" name="cc_avg" placeholder="Credit Card Spending (in thousands)" required>
+
+            <label for="education">Education Level</label>
+            <select id="education" name="education" required>
+                <option value="" selected disabled>-- Select Education Level --</option>
+                <option value="Bachelor">Bachelor's Degree</option>
+                <option value="Master">Master's Degree</option>
+                <option value="Advanced/Professional">Advanced/Professional Degree</option>
+            </select>
+
+            <label for="mortgage">Home Mortgage Value</label>
+            <input type="text" id="mortgage" name="mortgage" placeholder="Mortgage Value(In thousands)" required>
+
+            <label for="securities_account">Securities Account</label>
+            <select id="securities_account" name="securities_account" required>
+                <option value="" selected disabled>-- Select Securities Account --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="cd_account">Certificate of Deposit Account (CD Account)</label>
+            <select id="cd_account" name="cd_account" required>
+                <option value="" selected disabled>-- Select CD Account --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="online">Internet Banking Facilities</label>
+            <select id="online" name="online" required>
+                <option value="" selected disabled>-- Utilize Internet Banking Facilities? --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="credit_card">Credit Card Usage</label>
+            <select id="credit_card" name="credit_card" required>
+                <option value="" selected disabled>-- Use Credit Card? --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

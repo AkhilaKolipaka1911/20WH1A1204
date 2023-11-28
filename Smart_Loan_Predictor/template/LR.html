@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url("{{ url_for('static', filename='lr.png') }}") center/cover no-repeat;
+            /* filter: blur(1px); Slightly blur the background image */
+        }
+
+        .bg-text {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7); /* Add translucent white background around text */
+            padding: 60px; /* Increase the height of the box around text */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add box shadow for a bordered effect */
+        }
+
+        .button {
+            padding: 4px 8px; /* Reduce the padding for a smaller button */
+            font-size: 0.5em; /* Reduce the font size for a smaller button */
+            background-color: #e24a4a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ed8585;
+        }
+
+        h1 {
+            font-size: 3em; /* Keep the h1 font size */
+            margin-bottom: 60px;
+            color: #333; /* Darken the text color */
+        }
+
+        p {
+            font-size: 2.5em; /* Keep the p font size */
+            margin: 0;
+            color: #333; /* Darken the text color */
+        }
+    </style>
+    <title>Loan Reject</title>
+</head>
+<body>
+    <div class="bg-text">
+        <a href="/predict" class="button btn btn-danger">Back</a>
+        <h1>Loan Status</h1>
+        <p>Sorry!!Your loan application does not meet our approval criteria</p>
+    </div>
+</body>
+</html>
